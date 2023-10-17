@@ -5,7 +5,7 @@ import './Form.css'
 
 const Form=()=>{
 
-    let [Username,setUsername]=useState("")
+    let [Grid,setGrid]=useState("")
     let [email,setemail]= useState("")
     let [password,setpassword]=useState("")
     let [signupemail,setsignuppemail]=useState("")
@@ -14,13 +14,13 @@ const Form=()=>{
     let [check,setcheck]=useState(false)
 
 
-    const nameregex = /^([a-zA-Z]{2,40})+$/
+    const gridregex = /^([a-zA-Z]{2,40})+$/
     const emailregex=/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
     const passwordregex=/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
     
     const SignupSubmit =(e)=>{
         e.preventDefault()
-        if(Username.length==0&&signupemail.length==0&&signupemail.length==0){
+        if(Grid.length==0&&signupemail.length==0&&signupemail.length==0){
             setcheck(true)
             toast.error('Plz Enter The Data!', {
                 position: "top-center",
@@ -31,18 +31,6 @@ const Form=()=>{
                 draggable: false,
                 progress: undefined,
                 theme: "colored",
-                });
-        }else if(!nameregex.test(Username)){
-            setcheck(true)
-            toast.error(' Pelase User Name Valide !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
                 });
         }else if (!emailregex.test(signupemail)) {
             setcheck(true)
@@ -68,7 +56,7 @@ const Form=()=>{
                 progress: undefined,
                 theme: "dark",
                 });
-        }else if(Username.length>0&&signupemail.length>0&&signupemail.length>0){
+        }else if(Grid.length>0&&signupemail.length>0&&signupemail.length>0){
             toast.success('success', {
                 position: "top-center",
                 autoClose: 5000,
@@ -122,7 +110,7 @@ const Form=()=>{
                 theme: "dark",
                 });
         }else if(email==signupemail && password==signuppassword){
-            toast.success(' Login success', {
+            toast.success(' Login successfull', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -152,9 +140,9 @@ const Form=()=>{
                    :
                    <form onSubmit={SignupSubmit}>
                     <h1>Signup Form</h1>
-                        <input type="text" placeholder="username" onChange={(e)=>setUsername(e.target.value)}/>
+                        <input type="number" placeholder="GRID" onChange={(e)=>setGrid(e.target.value)}/>
                         <br/>
-                        {check&&Username.length<=0?<p>Not valide username</p>:""}
+                        {check&&Grid.length<=0?<p>Not valide Grid</p>:""}
                         <input type="text" placeholder="email" onChange={(e)=>setsignuppemail(e.target.value)} />
                         <br/>
                         {check&&signupemail.length<=0?<p>Not valide email</p>:""}
